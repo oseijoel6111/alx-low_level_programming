@@ -6,7 +6,7 @@
  * main - Entry point
  *
  * Description: This is the main function of the program.
- * It generates a random number and prints whether it is negative, positive, or zero.
+ *		It generates a random number and prints whether it is negative, positive, or zero.
  *
  * Return: Always 0 (Success)
  */
