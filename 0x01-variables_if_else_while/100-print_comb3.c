@@ -23,6 +23,8 @@ int main(void)
 			{
 				putchar(num + '0');
 				putchar(num2 + '0');
+				if (num == 8 && num2 == 9)
+					continue;
 				putchar(',');
 				putchar(' ');
 			}
