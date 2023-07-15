@@ -25,16 +25,16 @@ int main(void)
 
 				for (sOnes = startOnes; sOnes <= 9; sOnes++)
 				{
+					if (!(fTens == 9 && fOnes == 9 && sTens == 9 && sOnes == 9))
+					{
+						printf(", ");
+					}
+
 					putchar(fTens + '0');
 					putchar(fOnes + '0');
 					putchar(' ');
 					putchar(sTens + '0');
 					putchar(sOnes + '0');
-
-					if (!(fTens == 9 && fOnes == 9 && sTens == 9 && sOnes == 9))
-					{
-						printf(", ");
-					}
 				}
 			}
 		}
