@@ -19,12 +19,13 @@ int main(void)
 	{
 		for (num2 = 1; num2 < 10; num2++)
 		{
-			if (num == num2)
-				continue;
-			putchar((num % 10) + '0');
-			putchar((num2 % 10) + '0');
-			putchar(',');
-			putchar(' ');
+			if (num < num2)
+			{
+				putchar(num + '0');
+				putchar(num2 + '0');
+				putchar(',');
+				putchar(' ');
+			}
 		}
 	}
 	putchar('\n');
