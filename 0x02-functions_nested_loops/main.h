@@ -24,4 +24,7 @@ void times_table(void);
 
 void print_times_table(int n);
 
+int add(int, int);
+
+
 #endif
