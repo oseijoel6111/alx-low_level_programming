@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * print_alphabet - prints the alphabet
+ * print_alphabet_x10 - prints the alphabet 10 times
  *
- * Description: This function prints the alphabetics 10 times
- *              _putchar.
+ * Description: This function prints the alphabet from 'a' to 'z' 10 times
+ * using _putchar.
  *
  * Return: void
  */
