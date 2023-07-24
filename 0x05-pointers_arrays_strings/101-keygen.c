@@ -1,48 +1,54 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-#define PASSWORD_LENGTH 80
-
 /**
- * main - Generates a random valid password for the program 101-crackme.
+ * main - Generates random valid passwords for the program 101-crackme.
  *
- * Description: This program finds a random password whose checksum value
- *              equals 2772. The password is a string of ASCII characters
- *              with values between 48 ('0') and 126 ('~').
+ * description: finds checksum value from objdump
  *
- * Return: Always 0 (success).
+ * Return: 0
  */
+
+
 int main(void)
 {
-    int sum = 0;        /* Stores the current checksum */
-    int random;         /* Holds a randomly generated ASCII character value */
-    int counter = 0;    /* Keeps track of the number of characters in the password */
+	int counter, sum, random;
 
-    char password[PASSWORD_LENGTH + 1]; /* The generated password +1 for the null terminator '\0' */
+	sum = 0;
+	counter = 0;
+	random = 0;
 
-    srand(time(NULL)); /* Seed the random number generator with the current time */
+	char password [80];
 
-    while (sum < 2772 && counter < PASSWORD_LENGTH)
-    {
-        /* Generate a random character between ASCII 48 ('0') and ASCII 126 ('~') */
-        random = rand() % (126 - 48 + 1) + 48;
+	srand(time(NULL));
 
-        if (random == 127) /* Skip DEL (ASCII 127) as it's not printable */
-            continue;
+	while (sum < 2772)
+	{
 
-        /* Add the random character to the password and update the checksum */
-        if (sum + random <= 2772)
-        {
-            password[counter++] = random;
-            sum += random;
-        }
-    }
+		if (2772 - sum < 48)
+	{
+		sum -= password[--counter];
+	}
+		else if (2772 - sum <= 126)
+		{
+			random = 2772 - sum;
+		}
+		else
+		{
+			random = rand() % (126 - 48) + 48;
+		}
 
-    password[counter] = '\0'; /* Null-terminate the password */
+		if (random)
+		{
+			password[counter++] = random;
+			sum += random;
+		}
+		random = 0;
+	}
 
-    printf("%s\n", password);
+	password[counter] = '\0';
+	printf("%s\n", password);
 
-    return 0;
+	return 0;
 }
 
