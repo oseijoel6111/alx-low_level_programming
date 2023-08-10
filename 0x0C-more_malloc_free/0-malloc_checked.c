@@ -1,27 +1,21 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include "main.h"
 
 /**
- * safe_malloc - Allocates memory using malloc with error handling
- * @size: The size of the memory block to allocate
+ * *malloc_checked - Allocates memory using malloc.
+ * @b: Number of bytes to allocate.
  *
- * This function allocates memory using malloc and checks for allocation success.
- * If memory allocation fails, the function terminates the program with a status value of 98.
- *
- * Return: A pointer to the allocated memory
+ * Return: A pointer to the allocated memory.
  */
-void *safe_malloc(unsigned int size)
+void *malloc_checked(unsigned int b)
 {
-    void *ptr;
+    void *ptr = malloc(b);
 
-    /* Attempt to allocate memory */
-    ptr = malloc(size);
-
-    /* Check if allocation was successful */
     if (ptr == NULL)
     {
         fprintf(stderr, "Memory allocation failed\n");
-        exit(98);
+        exit(EXIT_FAILURE);
     }
 
     return ptr;
