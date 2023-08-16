@@ -1,40 +1,46 @@
 #include "3-calc.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
-* main - Prints calculator result
-*
-* @argc: int of commandline args
-*
-* @argv: 2-d array of commandline args
-*
-* Return: 0 success, 98 for argc error, 100 if div 0
-*/
-
-int main(int argc, char **argv)
+ * main - program that perfroms simple operations
+ * @argc: number of arguments
+ * @argv: array of arguments
+ *
+ * Return: Always 0 (Success)
+ */
+int main(int argc, char *argv[])
 {
-	int (*operator_function)(int, int), num1, num2;
+	int arg1, arg2, result;
+	char o;
+	int (*func)(int, int);
 
 	if (argc != 4)
-		printf("Error\n"), exit(98);
+	{
+		printf("Error\n");
+		exit(98);
+	}
 
-	num1 = atoi(argv[1]);
-	num2 = atoi(argv[3]);
+	arg1 = atoi(argv[1]);
+	arg2 = atoi(argv[3]);
 
-	operator_function = get_op_func(argv[2]);
-	if (!operator_function)
+	func = get_op_func(argv[2]);
+
+	if (!func)
 	{
 		printf("Error\n");
 		exit(99);
 	}
 
-	if (!num2 && (argv[2][0] == '/' || argv[2][0] == '%'))
+	o = *argv[2];
+
+	if ((o == '/' || o == '%') && arg2 == 0)
 	{
 		printf("Error\n");
 		exit(100);
 	}
 
-	printf("%d\n", operator_function(num1, num2));
+	result = func(arg1, arg2);
+
+	printf("%d\n", result);
+
 	return (0);
 }
